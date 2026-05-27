@@ -208,6 +208,19 @@
       font-weight: 700; cursor: pointer; transition: all 0.3s;
     }
     .bubble-close-btn:hover { transform: scale(1.05); background: #16a085; }
+    .bubble-model-answer {
+      background: rgba(255,255,255,0.12); border-left: 4px solid #1ABC9C;
+      border-radius: 12px; padding: 16px 20px; margin-bottom: 18px;
+      max-width: 700px; text-align: left;
+    }
+    .bubble-model-answer h5 {
+      color: #1ABC9C; font-size: 12px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px;
+    }
+    .bubble-model-answer p {
+      color: #F0F0F0; font-size: 15px; line-height: 1.6;
+    }
+    .bubble-model-answer strong { color: #FFD700; }
     .bubble-counter {
       position: absolute; top: 15px; right: 15px; z-index: 5;
       background: rgba(255,255,255,0.15); color: white;
@@ -359,51 +372,107 @@
     .team-score-btn.minus { background: #E74C3C; color: white; }
 
     /* ============================
-       SLIDE 4: GRAMMAR SPLIT SCREEN
+       SLIDE 4: GRAMMAR CARDS
        ============================ */
-    .split-screen {
-      display: grid; grid-template-columns: 1fr 4px 1fr;
-      gap: 0; height: calc(100vh - 200px);
-      border-radius: 20px; overflow: hidden;
+    .grammar-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; height: calc(100vh - 210px);
     }
-    .split-left {
-      background: linear-gradient(135deg, #1a3a5c 0%, #2c5282 100%);
-      padding: 30px; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 20px;
+    .grammar-card {
+      border-radius: 20px; padding: 22px 24px;
+      display: flex; flex-direction: column; gap: 10px;
+      overflow-y: auto;
     }
-    .split-divider {
-      background: white; opacity: 0.3;
+    .grammar-card.future-card {
+      background: linear-gradient(160deg, #0f2d5e 0%, #1a4a8a 100%);
+      border: 2px solid rgba(100,160,255,0.3);
     }
-    .split-right {
-      background: linear-gradient(135deg, #4a3728 0%, #6b4c3b 100%);
-      padding: 30px; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 20px;
+    .grammar-card.past-card {
+      background: linear-gradient(160deg, #3b1a0a 0%, #6b3010 100%);
+      border: 2px solid rgba(255,160,80,0.3);
     }
-    .split-title {
-      font-family: 'Space Mono', monospace;
-      font-size: 16px; font-weight: 700; letter-spacing: 2px;
-      color: rgba(255,255,255,0.7); text-transform: uppercase;
+    .gc-badge {
+      display: inline-block; padding: 4px 14px; border-radius: 20px;
+      font-family: 'Space Mono', monospace; font-size: 11px;
+      font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      align-self: flex-start;
     }
-    .split-tense-label {
+    .future-card .gc-badge { background: rgba(100,160,255,0.25); color: #90C8FF; }
+    .past-card .gc-badge { background: rgba(255,160,80,0.25); color: #FFB870; }
+    .gc-title {
       font-family: 'Playfair Display', serif;
-      font-size: 28px; font-weight: 700; color: #FFD700;
-      text-align: center;
+      font-size: 26px; font-weight: 700; color: #FFD700;
+      line-height: 1.1; margin: 0;
     }
-    .split-example {
-      min-height: 80px; display: flex; align-items: center; justify-content: center;
+    .gc-formula {
+      background: rgba(255,255,255,0.1); border-radius: 12px;
+      padding: 10px 14px;
     }
-    .split-sentence {
-      font-size: 22px; font-weight: 600; color: white;
-      text-align: center; line-height: 1.4;
-      opacity: 0; transition: opacity 0.3s;
+    .gc-formula-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      margin-bottom: 5px;
     }
-    .split-sentence.visible { opacity: 1; }
-    .split-sentence .verb-highlight {
-      color: #FFD700; font-style: italic;
+    .gc-formula-text {
+      font-family: 'Space Mono', monospace; font-size: 14px;
+      color: white; line-height: 1.5;
     }
+    .gc-formula-text .f-sub { color: #FFD700; font-weight: 700; }
+    .gc-formula-text .f-verb { color: #1ABC9C; font-weight: 700; }
+    .gc-formula-text .f-rest { color: rgba(255,255,255,0.8); }
+    .gc-use {
+      font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.5;
+      padding: 0 2px;
+    }
+    .gc-use strong { color: #FFD700; }
+    .gc-signals {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .gc-signal-tag {
+      background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.9);
+      padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600;
+    }
+    .gc-signals-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      margin-bottom: 4px;
+    }
+    .gc-divider {
+      height: 1px; background: rgba(255,255,255,0.15); margin: 2px 0;
+    }
+    .gc-examples-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      margin-bottom: 4px;
+    }
+    .gc-example-row {
+      background: rgba(0,0,0,0.25); border-radius: 10px;
+      padding: 10px 14px; cursor: pointer;
+      transition: all 0.3s; position: relative;
+      border-left: 3px solid transparent;
+    }
+    .future-card .gc-example-row { border-left-color: #4A9EFF; }
+    .past-card .gc-example-row { border-left-color: #FF8C42; }
+    .gc-example-row:hover { background: rgba(255,255,255,0.12); transform: translateX(3px); }
+    .gc-example-sentence {
+      font-size: 16px; font-weight: 600; color: white; line-height: 1.4;
+    }
+    .gc-example-sentence .verb-highlight { color: #FFD700; font-style: normal; font-weight: 800; }
+    .gc-example-translation {
+      font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 3px;
+      font-style: italic; max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.4s ease; opacity: 0;
+    }
+    .gc-example-row.revealed .gc-example-translation {
+      max-height: 40px; opacity: 1;
+    }
+    .gc-reveal-hint {
+      font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 4px;
+    }
+    .gc-example-row.revealed .gc-reveal-hint { display: none; }
     .split-nav-bar {
       display: flex; justify-content: center; align-items: center;
-      gap: 20px; margin-top: 10px;
+      gap: 20px; margin-top: 8px;
     }
     .split-nav-btn {
       background: var(--secondary); color: white; border: none;
@@ -411,12 +480,7 @@
       font-weight: 700; cursor: pointer; transition: all 0.3s;
     }
     .split-nav-btn:hover { transform: scale(1.05); background: var(--primary); }
-    .split-counter {
-      font-size: 14px; font-weight: 600; color: #666;
-    }
-    .split-click-hint {
-      font-size: 12px; color: rgba(255,255,255,0.5); text-align: center;
-    }
+    .split-counter { font-size: 14px; font-weight: 600; color: #666; }
 
     /* ============================
        SLIDE 5: FLIGHT BOARD
@@ -536,27 +600,51 @@
     .passport-tense-badge.future { background: #2980B9; }
     .passport-tense-badge.past { background: #8E44AD; }
     .passport-stamp {
-      position: absolute; inset: 0; display: flex;
-      align-items: center; justify-content: center;
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 14px;
       pointer-events: none; opacity: 0;
       transition: opacity 0.3s;
+      background: rgba(255,255,255,0.92);
+      border-radius: 12px; padding: 16px;
     }
     .passport-stamp.stamped { opacity: 1; }
     .stamp-img {
-      width: 120px; height: 120px; border-radius: 50%;
+      width: 100px; height: 100px; border-radius: 50%;
       border: 6px solid;
       display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 700; text-align: center;
+      font-size: 13px; font-weight: 700; text-align: center;
       transform: rotate(-15deg);
       animation: stamp-fall 0.4s cubic-bezier(0.34,1.56,0.64,1);
+      flex-shrink: 0;
     }
     .stamp-img.approved {
       border-color: #27AE60; color: #27AE60;
-      background: rgba(39,174,96,0.1);
+      background: rgba(39,174,96,0.12);
+    }
+    .stamp-correct-answer {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px; font-weight: 700;
+      color: #1a5c2a; text-align: center;
+      line-height: 1.3; padding: 10px 14px;
+      background: rgba(39,174,96,0.12);
+      border: 2px solid rgba(39,174,96,0.4);
+      border-radius: 12px; width: 100%;
+      animation: answer-pop 0.5s 0.3s both cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .stamp-correct-answer .answer-label {
+      display: block; font-family: 'Space Mono', monospace;
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: #27AE60;
+      margin-bottom: 5px;
     }
     @keyframes stamp-fall {
       0% { transform: scale(2) rotate(-15deg); opacity: 0; }
       100% { transform: scale(1) rotate(-15deg); opacity: 1; }
+    }
+    @keyframes answer-pop {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
     .passport-controls {
       display: flex; justify-content: center; align-items: center; gap: 20px;
@@ -692,6 +780,7 @@
             <span class="word-tag">Organized</span><span class="word-tag">Flexible</span>
           </div>
         </div>
+        <div class="bubble-model-answer" id="bubble-model-answer"></div>
         <button class="bubble-close-btn" onclick="closeBubbleQ()">✓ Next Bubble</button>
       </div>
     </div>
@@ -778,7 +867,7 @@
     <div class="mystery-board" id="mystery-board"></div>
   </div>
 
-  <!-- ========== SLIDE 4: GRAMMAR SPLIT SCREEN ========== -->
+  <!-- ========== SLIDE 4: GRAMMAR CARDS ========== -->
   <div id="slide-4" class="slide">
     <div class="navbar">
       <div class="navbar-pills">
@@ -793,31 +882,117 @@
     </div>
     <div class="slide-header">
       <h2>📚 Grammar: Future vs. Past</h2>
-      <p>Click each side to reveal the sentence with typewriter effect</p>
+      <p>Click on any example to reveal its meaning</p>
     </div>
-    <div class="split-screen">
-      <div class="split-left" id="split-left" onclick="revealLeft()">
-        <div class="split-title">FUTURE</div>
-        <div class="split-tense-label">BE GOING TO</div>
-        <div class="split-example">
-          <div class="split-sentence" id="split-future-text"></div>
+    <div class="grammar-grid">
+
+      <!-- FUTURE: BE GOING TO -->
+      <div class="grammar-card future-card">
+        <span class="gc-badge">Future</span>
+        <h3 class="gc-title">BE GOING TO</h3>
+
+        <div class="gc-formula">
+          <div class="gc-formula-label">Structure</div>
+          <div class="gc-formula-text">
+            <span class="f-sub">Subject</span> + <span class="f-verb">am / is / are</span> + going to + <span class="f-rest">verb (base form)</span>
+          </div>
         </div>
-        <div class="split-click-hint">👆 Click to reveal</div>
-      </div>
-      <div class="split-divider"></div>
-      <div class="split-right" id="split-right" onclick="revealRight()">
-        <div class="split-title">PAST</div>
-        <div class="split-tense-label">SIMPLE PAST</div>
-        <div class="split-example">
-          <div class="split-sentence" id="split-past-text"></div>
+
+        <div class="gc-use">
+          We use <strong>BE GOING TO</strong> to talk about <strong>plans and intentions</strong> decided before the moment of speaking, and to make <strong>predictions based on evidence</strong>.
         </div>
-        <div class="split-click-hint">👆 Click to reveal</div>
+
+        <div class="gc-divider"></div>
+
+        <div class="gc-signals-label">Time signals</div>
+        <div class="gc-signals">
+          <span class="gc-signal-tag">tomorrow</span>
+          <span class="gc-signal-tag">next week</span>
+          <span class="gc-signal-tag">tonight</span>
+          <span class="gc-signal-tag">this weekend</span>
+          <span class="gc-signal-tag">soon</span>
+          <span class="gc-signal-tag">in the future</span>
+        </div>
+
+        <div class="gc-divider"></div>
+
+        <div class="gc-examples-label">Examples — click to reveal meaning</div>
+        <div class="gc-example-row" onclick="this.classList.toggle('revealed')">
+          <div class="gc-example-sentence">I <span class="verb-highlight">am going to catch</span> a taxi tomorrow.</div>
+          <div class="gc-example-translation">Plan for the near future — the decision was made before speaking.</div>
+          <div class="gc-reveal-hint">👆 Tap to reveal</div>
+        </div>
+        <div class="gc-example-row" onclick="this.classList.toggle('revealed')">
+          <div class="gc-example-sentence">She <span class="verb-highlight">is going to drive</span> to the airport.</div>
+          <div class="gc-example-translation">She already has a plan — she decided this before now.</div>
+          <div class="gc-reveal-hint">👆 Tap to reveal</div>
+        </div>
+        <div class="gc-example-row" onclick="this.classList.toggle('revealed')">
+          <div class="gc-example-sentence">They <span class="verb-highlight">are going to rent</span> a car next weekend.</div>
+          <div class="gc-example-translation">A future intention — they have already arranged it.</div>
+          <div class="gc-reveal-hint">👆 Tap to reveal</div>
+        </div>
+        <div class="gc-example-row" onclick="this.classList.toggle('revealed')">
+          <div class="gc-example-sentence">We <span class="verb-highlight">are not going to miss</span> the flight.</div>
+          <div class="gc-example-translation">Negative form — subject + am/is/are + NOT + going to + verb.</div>
+          <div class="gc-reveal-hint">👆 Tap to reveal</div>
+        </div>
       </div>
-    </div>
-    <div class="split-nav-bar">
-      <button class="split-nav-btn" onclick="splitPrev()">← Previous</button>
-      <span class="split-counter" id="split-counter">1 / 6</span>
-      <button class="split-nav-btn" onclick="splitNext()">Next →</button>
+
+      <!-- PAST: SIMPLE PAST -->
+      <div class="grammar-card past-card">
+        <span class="gc-badge">Past</span>
+        <h3 class="gc-title">SIMPLE PAST</h3>
+
+        <div class="gc-formula">
+          <div class="gc-formula-label">Structure</div>
+          <div class="gc-formula-text">
+            <span class="f-sub">Subject</span> + <span class="f-verb">verb (past form)</span> + <span class="f-rest">complement</span><br>
+            <span style="color:rgba(255,255,255,0.5);font-size:12px;">Regular: verb + -ed &nbsp;|&nbsp; Irregular: special form</span>
+          </div>
+        </div>
+
+        <div class="gc-use">
+          We use <strong>Simple Past</strong> to talk about <strong>completed actions</strong> at a specific time in the past. The action <strong>started and finished</strong> in the past.
+        </div>
+
+        <div class="gc-divider"></div>
+
+        <div class="gc-signals-label">Time signals</div>
+        <div class="gc-signals">
+          <span class="gc-signal-tag">yesterday</span>
+          <span class="gc-signal-tag">last night</span>
+          <span class="gc-signal-tag">last week</span>
+          <span class="gc-signal-tag">ago</span>
+          <span class="gc-signal-tag">this morning</span>
+          <span class="gc-signal-tag">in 2020</span>
+        </div>
+
+        <div class="gc-divider"></div>
+
+        <div class="gc-examples-label">Examples — click to reveal meaning</div>
+        <div class="gc-example-row" onclick="this.classList.toggle('revealed')">
+          <div class="gc-example-sentence">I <span class="verb-highlight">caught</span> a taxi last night.</div>
+          <div class="gc-example-translation">Irregular verb: catch → caught. Completed action in the past.</div>
+          <div class="gc-reveal-hint">👆 Tap to reveal</div>
+        </div>
+        <div class="gc-example-row" onclick="this.classList.toggle('revealed')">
+          <div class="gc-example-sentence">She <span class="verb-highlight">drove</span> to the airport yesterday.</div>
+          <div class="gc-example-translation">Irregular verb: drive → drove. The action is finished.</div>
+          <div class="gc-reveal-hint">👆 Tap to reveal</div>
+        </div>
+        <div class="gc-example-row" onclick="this.classList.toggle('revealed')">
+          <div class="gc-example-sentence">They <span class="verb-highlight">rented</span> a car last weekend.</div>
+          <div class="gc-example-translation">Regular verb: rent → rented (+ -ed). Action completed in the past.</div>
+          <div class="gc-reveal-hint">👆 Tap to reveal</div>
+        </div>
+        <div class="gc-example-row" onclick="this.classList.toggle('revealed')">
+          <div class="gc-example-sentence">We <span class="verb-highlight">did not miss</span> the flight.</div>
+          <div class="gc-example-translation">Negative form — subject + did + NOT + verb (base form).</div>
+          <div class="gc-reveal-hint">👆 Tap to reveal</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -910,6 +1085,13 @@ const BUBBLE_QUESTIONS = [
   "How do you handle stressful situations?",
   "What personality trait do you value most in a friend?"
 ];
+const BUBBLE_MODEL_ANSWERS = [
+  `<h5>💡 Model Answer</h5><p>I would describe myself as <strong>friendly</strong>, <strong>creative</strong>, and <strong>ambitious</strong>. I love meeting new people and making them feel welcome, I enjoy finding original solutions to problems, and I always set goals to keep growing personally and professionally.</p>`,
+  `<h5>💡 Model Answer</h5><p>I think my best personality trait is being <strong>empathetic</strong>. I can easily understand how other people feel, so I always try to listen carefully and support them when they need it. This helps me build strong and meaningful relationships.</p>`,
+  `<h5>💡 Model Answer</h5><p>I am more of an <strong>extrovert</strong>. I feel energized when I am around other people, I enjoy group activities, and I love having conversations. However, I also appreciate some quiet time to recharge and reflect.</p>`,
+  `<h5>💡 Model Answer</h5><p>When I face stressful situations, I try to stay <strong>calm</strong> and <strong>organized</strong>. I make a list of priorities, focus on one thing at a time, and take deep breaths. Being <strong>flexible</strong> also helps me adapt when things do not go as planned.</p>`,
+  `<h5>💡 Model Answer</h5><p>The personality trait I value most in a friend is being <strong>patient</strong>. A patient friend listens without judging, gives you time to express yourself, and stays by your side even during difficult moments. I also appreciate when friends are <strong>outgoing</strong> and make every moment fun.</p>`
+];
 const BUBBLE_COLORS = ['#E74C3C','#3498DB','#2ECC71','#F39C12','#9B59B6','#1ABC9C','#E67E22','#E91E63'];
 let bubblesInitialized = false;
 let poppedCount = 0;
@@ -946,6 +1128,7 @@ function popBubble(el, qIndex) {
   poppedCount++;
   document.getElementById('popped-count').textContent = poppedCount;
   document.getElementById('bubble-q-text').textContent = '"' + BUBBLE_QUESTIONS[qIndex] + '"';
+  document.getElementById('bubble-model-answer').innerHTML = BUBBLE_MODEL_ANSWERS[qIndex];
   document.getElementById('bubble-q-overlay').classList.add('active');
 }
 
@@ -1228,6 +1411,10 @@ function renderPassportPages() {
         <div class="passport-scenario">${d.scenario.replace(/\n/g,'<br>')}</div>
         <div class="passport-stamp ${stamped}" id="stamp-${idx}">
           <div class="stamp-img approved">✅<br>APPROVED</div>
+          <div class="stamp-correct-answer">
+            <span class="answer-label">💡 Correct Answer</span>
+            ${d.answer}
+          </div>
         </div>
       </div>`;
   });
